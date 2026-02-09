@@ -3,10 +3,21 @@
   "version": "1.0.0",
   "description": "Teach AI your coding style.",
   "type": "module",
+  "bin": {
+    "agentstyle": "dist/bin/agentstyle.js"
+  },
   "main": "index.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "start": "tsx bin/agenstyle.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx bin/agentstyle.ts",
+    "build": "tsc -p tsconfig.build.json && node scripts/postbuild.mjs",
+    "prepack": "pnpm run build",
+    "start": "node dist/bin/agentstyle.js",
+    "test": "node --import tsx --test"
   },
   "keywords": [],
   "author": "Jad El Asmar",
